@@ -44,6 +44,11 @@ pipeline {
             }
         }
         stage ('Terraform destory') {
+            when {
+                expression {
+                    params.terraform == "destroy"
+                }
+            }
             steps {
                 script {
                     sh "terraform destroy --auto-approve"
