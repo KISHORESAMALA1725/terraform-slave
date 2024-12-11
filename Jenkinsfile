@@ -4,13 +4,13 @@ pipeline {
     }
     parameters {
         string (name: 'Please enter your name', defaultValue: 'KISHORE', description: '#####')
-        choice (name: 'Please select one option', choices: ["init","validate"], description: "this is terraform")
+        choice (name: 'terraform', choices: ["init","validate"], description: "this is terraform")
     }
     stages {
         stage ('this is terraform init stage') {
             when {
                 expression {
-                    params.choices == "init"
+                    params.terraform == "init"
                 }
             }
             steps {
