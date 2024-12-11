@@ -1,7 +1,6 @@
-
 pipeline {
     agent {
-        label 'terrafom-slave'
+        label 'terraform-slave'
     }
     stages {
         stage ('This is terraform-slave test') {
