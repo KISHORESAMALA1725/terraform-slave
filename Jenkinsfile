@@ -4,7 +4,7 @@ pipeline {
     }
     parameters {
         string (name: 'USERNAME', defaultValue: 'KISHORE', description: 'Please enter your name')
-        choice (name: 'terraform', choices: ["init","validate","apply","destroy"], description: "this is terraform")
+        choice (name: 'terraform', choices: ["init","validate","plan","apply","destroy"], description: "this is terraform")
     }
     stages {
         stage ('this is terraform init stage') {
@@ -28,6 +28,18 @@ pipeline {
             steps {
                 script {
                     sh "terraform validate"
+                }
+            }
+        }
+        stage ('this is terraform plan') {
+            when {
+                expression {
+                    params.terraform == "plan"
+                }
+            }
+            steps {
+                script {
+                    sh "terraform plan"
                 }
             }
         }
