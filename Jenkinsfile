@@ -2,15 +2,8 @@ pipeline {
     agent {
         label 'terraform-slave'
     }
-    stages {
-        stage ('This is terraform-slave test') {
-            steps {
-                script {
-                    sh "hostname -a"
-                    sh "hostname"
-                    echo "Hostname"
-                }
-            }
-        }
+    parameters {
+        string (name: 'Please enter your name', defaultValue: 'KISHORE', description: '#####')
+        choices (name: 'Please select one option', choices: ["terraform init"])
     }
 }
