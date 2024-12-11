@@ -51,7 +51,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "terraform apply -y"
+                    sh "terraform apply --auto-approve"
                 }
             }
         }
